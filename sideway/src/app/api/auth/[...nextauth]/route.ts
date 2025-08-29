@@ -6,6 +6,24 @@ import { SupabaseAdapter } from "@next-auth/supabase-adapter"
 import { supabase } from "@/lib/supabaseClient"
 import bcrypt from "bcryptjs"
 
+// Extend the Session and User types to include 'id'
+declare module "next-auth" {
+    interface Session {
+        user: {
+            id: string
+            name?: string | null
+            email?: string | null
+            image?: string | null
+        }
+    }
+    interface User {
+        id: string
+        name?: string | null
+        email?: string | null
+        image?: string | null
+    }
+}
+
 
 const handler = NextAuth({
     // 👇 storage for user sessions
@@ -64,9 +82,11 @@ const handler = NextAuth({
             return token
         },
         async session({ session, token }) {
-            session.user.id = token.id
-            session.user.name = token.name
-            session.user.email = token.email
+            if (session.user) {
+                session.user.id = String(token.id)
+                session.user.name = token.name
+                session.user.email = token.email
+            }
             return session
         },
     },
