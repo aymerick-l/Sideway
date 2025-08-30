@@ -4,93 +4,73 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center h-screen overflow-hidden p-8 pb-20 gap-16 sm:p-20">
-  <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="font-sans flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <header className="flex flex-col items-center justify-center flex-1 text-center px-6">
         <Image
-          className="dark:invert"
           src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          alt="SideWay logo"
+          width={80}
+          height={80}
+          className="mb-6 dark:invert"
         />
-
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <Button asChild>
-            <a
-              href="https://vercel.com/new"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Deploy now
-            </a>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          SideWay 🚀
+        </h1>
+        <p className="mt-4 max-w-xl text-lg text-gray-600 dark:text-gray-300">
+          Une plateforme où chacun développe ses compétences en contribuant à
+          des projets réels, en partageant son savoir-faire et en aidant les
+          autres à avancer.
+        </p>
+        <div className="mt-6 flex gap-4">
+          <Button size="lg" asChild>
+            <a href="/auth/signup">Rejoindre SideWay</a>
           </Button>
-
-          <Button variant="outline" asChild>
-            <a
-              href="https://nextjs.org/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read docs
-            </a>
+          <Button size="lg" variant="outline" asChild>
+            <a href="/auth/login">Se connecter</a>
           </Button>
         </div>
+      </header>
 
-        <Card className="w-[350px] mt-8">
-          <CardHeader>
-            <CardTitle>Welcome to SideWay 🚀</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p>
-              A platform where curious minds can collaborate on real-world
-              projects, learn by doing, and build meaningful experiences.
-            </p>
-          </CardContent>
-        </Card>
-      </main>
+      {/* Pourquoi SideWay */}
+      <section className="px-6 py-16 bg-gray-50 dark:bg-gray-900">
+        <h2 className="text-2xl font-semibold text-center mb-12">
+          Pourquoi choisir SideWay ?
+        </h2>
+        <div className="grid gap-8 sm:grid-cols-3 max-w-5xl mx-auto">
+          <Card className="shadow-md">
+            <CardHeader>
+              <CardTitle>🌱 Développer vos compétences</CardTitle>
+            </CardHeader>
+            <CardContent>
+              Mettez vos talents au service de projets concrets et progressez en
+              aidant les autres à réussir.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md">
+            <CardHeader>
+              <CardTitle>🤝 Collaborer et partager</CardTitle>
+            </CardHeader>
+            <CardContent>
+              Intégrez une communauté où chacun contribue avec ses forces et
+              apprend des autres.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md">
+            <CardHeader>
+              <CardTitle>💡 Donner vie aux idées</CardTitle>
+            </CardHeader>
+            <CardContent>
+              Particuliers ou entreprises publient leurs projets, et vous pouvez
+              y contribuer pour innover ensemble.
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-  <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-          Go to nextjs.org →
-        </a>
+      {/* Footer */}
+      <footer className="py-6 border-t text-center text-sm text-gray-500 dark:text-gray-400">
+        © {new Date().getFullYear()} SideWay — Construisons ensemble l’avenir 🚀
       </footer>
     </div>
   )

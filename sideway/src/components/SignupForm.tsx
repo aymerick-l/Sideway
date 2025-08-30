@@ -20,7 +20,7 @@ export default function SignupForm() {
     setError(null)
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match")
+      setError("Les mots de passe ne correspondent pas.")
       return
     }
 
@@ -65,13 +65,13 @@ export default function SignupForm() {
   return (
     <div className="flex flex-col gap-6 max-w-sm w-full border p-6 rounded-lg shadow bg-white dark:bg-gray-800">
       <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">
-        Create an account
+        Créer un compte
       </h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
           type="text"
-          placeholder="Username"
+          placeholder="Nom d'utilisateur"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -85,14 +85,14 @@ export default function SignupForm() {
         />
         <Input
           type="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <Input
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Confirmer le mot de passe"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
@@ -106,14 +106,14 @@ export default function SignupForm() {
       {error && <p className="text-red-500 text-sm text-center">{error}</p>}
       {success && (
         <p className="text-green-600 text-sm text-center">
-          Account created 🎉 Logging you in...
+          Compte créé 🎉 Connection en cours ...
         </p>
       )}
 
       {/* Separator */}
       <div className="flex items-center gap-2 my-2">
         <span className="flex-grow border-t border-gray-300 dark:border-gray-600"></span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">or continue with</span>
+        <span className="text-sm text-gray-500 dark:text-gray-400">ou continuer avec</span>
         <span className="flex-grow border-t border-gray-300 dark:border-gray-600"></span>
       </div>
 

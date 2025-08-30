@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react"
 import { FaGithub, FaGoogle } from "react-icons/fa"
 
 export default function LoginForm() {
-  const [identifier, setIdentifier] = useState("") // username or email
+  const [identifier, setIdentifier] = useState("") // email
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -24,9 +24,14 @@ export default function LoginForm() {
     })
 
     if (res?.error) {
-      setError(res.error)
+      // 🔹 NextAuth renvoie souvent "CredentialsSignin", on personnalise le message
+      if (res.error === "CredentialsSignin") {
+        setError("Email ou mot de passe incorrect.")
+      } else {
+        setError("Une erreur est survenue, veuillez réessayer.")
+      }
     } else {
-      window.location.href = "/" // redirect after successful login
+      window.location.href = "/" // redirection après login réussi
     }
 
     setLoading(false)
@@ -39,41 +44,46 @@ export default function LoginForm() {
   return (
     <div className="flex flex-col gap-6 max-w-sm w-full border p-6 rounded-lg shadow bg-white dark:bg-gray-800">
       <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">
-        Login
+        Connexion
       </h2>
 
-      {/* Credentials Form */}
+      {/* Formulaire login */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
           type="text"
-          placeholder="Username or Email"
+          placeholder="Email"
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
           required
         />
         <Input
           type="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
 
         <Button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
+          {loading ? "Connexion en cours..." : "Se connecter"}
         </Button>
       </form>
 
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+      {/* Message d'erreur */}
+      {error && (
+        <p className="text-red-500 text-sm text-center mt-2">
+          {error}
+        </p>
+      )}
 
-      {/* Separator */}
+      {/* Séparateur */}
       <div className="flex items-center gap-2 my-2">
         <span className="flex-grow border-t border-gray-300 dark:border-gray-600"></span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">or continue with</span>
+        <span className="text-sm text-gray-500 dark:text-gray-400">ou continuer avec</span>
         <span className="flex-grow border-t border-gray-300 dark:border-gray-600"></span>
       </div>
 
-      {/* OAuth Buttons side by side */}
+      {/* OAuth Buttons */}
       <div className="flex gap-4">
         <Button
           variant="outline"

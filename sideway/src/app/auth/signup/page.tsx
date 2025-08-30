@@ -10,22 +10,22 @@ export default function SignupPage() {
       <div className="max-w-md w-full flex flex-col items-center gap-8">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Image src="/next.svg" alt="SideWay logo" width={40} height={40} />
+          <Image src="/next.svg" alt="Logo SideWay" width={40} height={40} />
           <span className="font-bold text-2xl text-gray-900 dark:text-white">SideWay</span>
         </div>
 
-        {/* Card Form */}
+        {/* Formulaire d’inscription */}
         <SignupForm />
 
-        {/* Footer / disclaimer */}
+        {/* Pied de page / mentions légales */}
         <p className="text-sm text-center text-gray-500 dark:text-gray-400">
-          By signing up, you agree to our{" "}
+          En vous inscrivant, vous acceptez nos{" "}
           <a href="#" className="underline">
-            Terms of Service
+            Conditions d’utilisation
           </a>{" "}
-          and{" "}
+          et notre{" "}
           <a href="#" className="underline">
-            Privacy Policy
+            Politique de confidentialité
           </a>
           .
         </p>
